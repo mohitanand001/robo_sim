@@ -34,7 +34,9 @@ void Robo::move_if_safe()
 
 void Robo::report_robo_position()
 {
-	// std::cout
+	if(placed_on_table == false)
+		return; 
+	std::cout << x << " " << y << std::endl;
 }
 
 bool Robo::is_safe_here(int new_x, int new_y)
