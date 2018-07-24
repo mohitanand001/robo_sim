@@ -1,57 +1,72 @@
-
 #include<iostream>
+#include <string>
 
-class Robo{
+#include "robo.h"
 
-	private:
-		int x ; 
-		int y ;
-		std::string face ;  
-		static bool placed_on_table ;
+Robo::Robo()
+{
+	placed_on_table = false;
+}
 
-	public:
-		// default constructor using member initializer list 
-		Robo() :
-		{face("");} 
+// void Robo::set_val(int a, int b)
+// {
+// 	x = a;
+// 	y = b;
+// }
 
-		void set_position_or_face(char face, int x, int y)
-		{
-			this->x = x;
-			this->y = y;
-			this->face = face;
-		}
+// void Robo::get_val()
+// {
+// 	std::cout << x << " " << y << std::endl;
+// }
 
-		void set_position_or_face(std::string face)
-		{
-			this->face = face; 
-		}
+void Robo::move_if_safe()
+{
+	if(placed_on_table == false)
+		return;
 
-		void set_face(std::string face)
-		{
-			this->face = face; 
-		}
+	if(is_safe_here(x + dx[face], y + dy[face]) == false)
+		return ;
 
-		void report_position()
-		{
-			std:: cout << this->x << " " << this->y << std:: endl; 
-		}
+	x = x + dx[face];
+	y = y + dy[face];
 
-		void issue_command(const std::string &comm, )
-		{
-			if(comm == "MOVE" and is_safe_after_moving(x, y, face))
-			{
-				set_position(face, x , y); 
-			}
+}
 
-			else if(comm == "PLACE ")
-			{
-				placed_on_table = true; 				
-			}
+void Robo::report_robo_position()
+{
+	// std::cout
+}
 
-			else
-			{
-				set_position_or_face(comm); 
-			}
-		}
+bool Robo::is_safe_here(int new_x, int new_y)
+{
+	if(new_x < 0 or new_x > 4 or new_y < 0 or new_y > 4)
+		return false;
 
-};
+	return true;
+}
+
+
+void Robo::issue_command(const std::string command)
+{
+	if(command == "MOVE")
+	{
+		// move robo only if it is safe, i.e. it 
+		// does not go out of boundary
+		move_if_safe(); 
+	}
+
+	else if(command == "LEFT" or command == "RIGHT")
+	{
+		rotate_robo() ;
+	}
+
+	else if(command == "REPORT")
+	{
+		report_robo_position() ;
+	}
+
+	else
+	{
+		place_if_safe() ;
+	}
+}
