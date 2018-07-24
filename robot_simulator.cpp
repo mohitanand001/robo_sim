@@ -6,8 +6,10 @@
 #include "robo.h"
 
 
+// member initialization list
 Robo::Robo():
-placed_on_table(false), dx({0,1,0,-1}), dy({1,0,-1,0}), 
+placed_on_table(false), 
+dx({0, 1, 0, -1}), dy({ 1, 0, -1, 0}), 
 direction_map{{"NORTH", 0}, {"EAST", 1}, {"SOUTH", 2}, {"WEST", 3}},
 rev_direction_map{{0, "NORTH"}, {1, "EAST"}, {2, "SOUTH"}, {3, "WEST"}}
 {}
@@ -40,7 +42,11 @@ void Robo::move_if_safe()
 void Robo::report_robo_position()
 {
 	if(placed_on_table == false)
+	{
+		std::cout << "not in place" << std::endl; 
 		return; 
+	}
+
 	std::cout << x << " " << y <<  " " << rev_direction_map[face] << std::endl;
 }
 
@@ -93,7 +99,7 @@ void Robo::issue_command(const std::string &command, int new_x, int new_y, const
 		report_robo_position() ;
 	}
 
-	else
+	else if(command == "PLACE")
 	{
 		place_if_safe(new_x, new_y, direction) ;
 	}
