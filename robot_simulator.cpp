@@ -8,16 +8,6 @@ Robo::Robo()
 	placed_on_table = false;
 }
 
-// void Robo::set_val(int a, int b)
-// {
-// 	x = a;
-// 	y = b;
-// }
-
-// void Robo::get_val()
-// {
-// 	std::cout << x << " " << y << std::endl;
-// }
 
 void Robo::move_if_safe()
 {
@@ -48,6 +38,20 @@ bool Robo::is_safe_here(int new_x, int new_y)
 }
 
 
+void Robo::rotate_robo(const std::string command)
+{
+	// rotate_robo clockwise by 90 degrees
+	if(command == "RIGHT")
+	{
+		face = (face + 1) % 4;
+	} 	
+	// rotate_robo anti-clockwise by 90 degrees
+	else
+	{
+		face = (face -1 + 4) % 4;
+	}
+}
+
 void Robo::issue_command(const std::string command)
 {
 	if(command == "MOVE")
@@ -59,7 +63,7 @@ void Robo::issue_command(const std::string command)
 
 	else if(command == "LEFT" or command == "RIGHT")
 	{
-		rotate_robo() ;
+		rotate_robo(command) ;
 	}
 
 	else if(command == "REPORT")
