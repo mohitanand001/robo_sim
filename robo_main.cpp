@@ -1,13 +1,17 @@
 #include<iostream>
-#include<string> 
+#include <string>
+#include<map>
+#include <vector>
 
+#include "command.h"
+#include "robo.h"
 
 int main()
 {
 	std::string command , direction;
 	int new_x, new_y ; 
 
-	// Robo x; 
+	Robo x; 
 
 	while(true)
 	{
@@ -18,8 +22,8 @@ int main()
 		command = "", direction = "";
 		parse_command(command, new_x, new_y, direction) ;
 
-		std::cout << command << " " << new_x << " " << new_y << " " << direction << std :: endl;
+		// std::cout << command << " " << new_x << " " << new_y << " " << direction << std :: endl;
 
-		// x.issue_command(command, new_x, new_y, direction) ; 
+		x.issue_command(command, new_x, new_y, direction) ; 
 	}
 }
