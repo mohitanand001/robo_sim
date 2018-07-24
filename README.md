@@ -9,7 +9,7 @@
 * Used`member initializer list` instead of `member assignment`
 
 ### How to run the file
-* One way is to create object files for all the cpp files, and then link them together
+* One way is to create object files for all the cpp files, and then link them together <br>
 `g++ command_parser.cpp -c -std=c++11`<br>
 `g++ robo_main.cpp -c -std=c++11`<br>
 `g++ robot_simulator.o command_parser.o robo_main.o -o robo_move` <br>
