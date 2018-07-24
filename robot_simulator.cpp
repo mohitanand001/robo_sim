@@ -5,14 +5,12 @@
 
 #include "robo.h"
 
-Robo::Robo()
-{
-	placed_on_table = false;
-	direction_map["NORTH"] = 0, direction_map["EAST"] = 1, direction_map["SOUTH"] = 2, direction_map["WEST"] = 3;
-	dx = {0, 1, 0, -1};
-	dy = {1, 0, -1, 0};
 
-}
+Robo::Robo():
+placed_on_table(false), dx({0,1,0,-1}), dy({1,0,-1,0}), 
+direction_map{{"NORTH", 0}, {"EAST", 1}, {"SOUTH", 2}, {"WEST", 3}}
+{}
+
 
 // utility function
 bool Robo::is_safe_here(int new_x, int new_y)
