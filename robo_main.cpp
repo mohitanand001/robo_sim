@@ -1,23 +1,25 @@
 #include<iostream>
 #include<string> 
 
-#include "robo.h"
-#include "command.h"
-
-
-
-
 
 int main()
 {
-	std::string command ;
-	
-	Robo x; 
+	std::string command , direction;
+	int new_x, new_y ; 
+
+	// Robo x; 
 
 	while(true)
 	{
-		command = parse_commands() ;
+		// passing command, new_x, new_y as 
+		// reference to parse_commands function
+		// this ensures that variables are not copied
+		// to prevent inefficiency
+		command = "", direction = "";
+		parse_command(command, new_x, new_y, direction) ;
 
-		x.give_command(command); 
+		std::cout << command << " " << new_x << " " << new_y << " " << direction << std :: endl;
+
+		// x.issue_command(command, new_x, new_y, direction) ; 
 	}
 }

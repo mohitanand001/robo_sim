@@ -8,7 +8,16 @@ Robo::Robo()
 	placed_on_table = false;
 }
 
+// utility function
+bool Robo::is_safe_here(int new_x, int new_y)
+{
+	if(new_x < 0 or new_x > 4 or new_y < 0 or new_y > 4)
+		return false;
 
+	return true;
+}
+
+// MOVE
 void Robo::move_if_safe()
 {
 	if(placed_on_table == false)
@@ -22,6 +31,7 @@ void Robo::move_if_safe()
 
 }
 
+// REPORT
 void Robo::report_robo_position()
 {
 	if(placed_on_table == false)
@@ -29,16 +39,8 @@ void Robo::report_robo_position()
 	std::cout << x << " " << y << std::endl;
 }
 
-bool Robo::is_safe_here(int new_x, int new_y)
-{
-	if(new_x < 0 or new_x > 4 or new_y < 0 or new_y > 4)
-		return false;
-
-	return true;
-}
-
-
-void Robo::rotate_robo(const std::string command)
+// LEFT or RIGHT
+void Robo::rotate_robo(const std::string &command)
 {
 	// rotate_robo clockwise by 90 degrees
 	if(command == "RIGHT")
@@ -52,7 +54,22 @@ void Robo::rotate_robo(const std::string command)
 	}
 }
 
-void Robo::issue_command(const std::string command)
+// PLACE X, Y, face
+
+void Robo::place_if_safe(int new_x, int new_y, const std:string &direction)
+{
+	if(is_safe_here(new_x, new_y) == false)
+		return;
+
+	x = new_x;
+	y = new_y;
+	// face = direction_map[direction]; 
+	placed_on_table = true;
+
+}
+
+// Handles all command
+void Robo::issue_command(const std::string &command, int new_x, int new_y, const std::string &direction)
 {
 	if(command == "MOVE")
 	{
@@ -73,6 +90,6 @@ void Robo::issue_command(const std::string command)
 
 	else
 	{
-		place_if_safe() ;
+		place_if_safe(new_x, new_y, direction) ;
 	}
 }
