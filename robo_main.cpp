@@ -1,6 +1,6 @@
-#include<iostream>
+#include <iostream>
 #include <string>
-#include<map>
+#include <map>
 #include <vector>
 
 #include "command.h"
@@ -21,8 +21,6 @@ int main()
 		// to prevent inefficiency
 		command = "", direction = "";
 		parse_command(command, new_x, new_y, direction) ;
-
-		// std::cout << command << " " << new_x << " " << new_y << " " << direction << std :: endl;
 
 		x.issue_command(command, new_x, new_y, direction) ; 
 	}

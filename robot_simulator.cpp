@@ -1,6 +1,6 @@
-#include<iostream>
+#include <iostream>
 #include <string>
-#include<map>
+#include <map>
 #include <vector>
 
 #include "robo.h"
