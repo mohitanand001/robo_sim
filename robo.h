@@ -10,6 +10,7 @@ class Robo{
 		std::vector<int> dx;
 		std::vector<int> dy;
 		std::map< std::string, int> direction_map;  
+		std::map< int, std::string> rev_direction_map;
 	public:
 
 		Robo();
